@@ -1,6 +1,6 @@
 #!/bin/sh
 
-REGION="ams"
+REGION=ams
 APP_NAME=alistpan
 DATABASE=sqlite3
 
@@ -13,12 +13,12 @@ if [ -z "${APP_NAME}" ]; then
     printf '\e[31m错误：未指定APP名称。\n\e[0m' && exit 1
 fi
 
-flyctl info --app "${APP_NAME}" >/tmp/${APP_NAME} 2>&1;
+fly info --app "${APP_NAME}" >/tmp/${APP_NAME} 2>&1;
 if [ "$(cat /tmp/${APP_NAME} | grep -o "Could not resolve App")" = "Could not resolve App" ]; then
     printf '\e[33m进度2/5：创建应用\n\e[0m'
-    flyctl apps create "${APP_NAME}" >/dev/null 2>&1;
+    fly apps create "${APP_NAME}" >/dev/null 2>&1;
 
-    flyctl info --app "${APP_NAME}" >/tmp/${APP_NAME} 2>&1;
+    fly info --app "${APP_NAME}" >/tmp/${APP_NAME} 2>&1;
     if [ "$(cat /tmp/${APP_NAME} | grep -o "Could not resolve App")" != "Could not resolve App" ]; then
         printf '\e[32m创建应用成功\n\e[0m'
     else
@@ -71,5 +71,5 @@ fly secrets set DATABASE="${DATABASE}"
 # flyctl secrets set SQLNAME="${SQLNAME}"
 fly regions set REGION ${REGION}
 printf '\e[32m进度5/5：部署\n\e[0m'
-fly deploy --detach
+fly deploy
 # flyctl status --app ${APP_NAME}
