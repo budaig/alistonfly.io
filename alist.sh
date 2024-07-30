@@ -9,11 +9,11 @@ cat >/opt/alist/data/config.json <<EOF
   "assets": "local",
   "database": {
     "type": "$DATABASE",
-    "user": "$SQLUSER",
-    "password": "$SQLPASSWORD",
-    "host": "$SQLHOST",
-    "port": $SQLPORT,
-    "name": "$SQLNAME",
+    # "user": "$SQLUSER",
+    # "password": "$SQLPASSWORD",
+    # "host": "$SQLHOST",
+    # "port": $SQLPORT,
+    # "name": "$SQLNAME",
     "table_prefix": "x_",
     "db_file": "data.db"
   },
