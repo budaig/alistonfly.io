@@ -1,8 +1,6 @@
 #!/bin/sh
 
 REGION=ams
-APP_NAME=${{ secrets.APP_NAME }}
-DATABASE=${{ secrets.DATABASE }}
 
 if ! command -v flyctl >/dev/null 2>&1; then
     printf '\e[33m进度1/5：安装Fly.io CLI。\n\e[0m'
@@ -30,7 +28,7 @@ fi
 
 printf '\e[33m进度3/5：创建配置文件\n\e[0m'
 cat <<EOF >./fly.toml
-app = "$APP_NAME"
+app = "${APP_NAME}"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
@@ -69,7 +67,7 @@ flyctl secrets set DATABASE="${DATABASE}"
 # flyctl secrets set SQLHOST="${SQLHOST}"
 # flyctl secrets set SQLPORT="${SQLPORT}"
 # flyctl secrets set SQLNAME="${SQLNAME}"
-flyctl regions set REGION $REGION
+flyctl regions set REGION ${REGION}
 printf '\e[32m进度5/5：部署\n\e[0m'
 flyctl deploy --detach
 # flyctl status --app ${APP_NAME}
