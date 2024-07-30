@@ -62,7 +62,7 @@ EOF
 printf '\e[32m成功创建配置\n\e[0m'
 printf '\e[33m进度4/5：创建环境变量及部署区域\n\e[0m'
 
-/usr/share/bin/flyctl auth -t ${{ secrets.FLY_API_TOKEN }}
+/usr/share/bin/flyctl auth -t ${FLY_API_TOKEN}
 /usr/share/bin/flyctl secrets set DATABASE="${DATABASE}"
 # flyctl secrets set SQLUSER="${SQLUSER}"
 # flyctl secrets set SQLPASSWORD="${SQLPASSWORD}"
