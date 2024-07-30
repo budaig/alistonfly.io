@@ -1,8 +1,8 @@
 
 # 创建配置文件目录
-mkdir -p /opt/alist/data/
+mkdir -p /usr/share/alist/
 
-cat >/opt/alist/data/config.json <<EOF
+cat >/usr/share/alist/config.json <<EOF
 {
   "address": "0.0.0.0",
   "port": 5286,
@@ -29,5 +29,5 @@ cat >/opt/alist/data/config.json <<EOF
 }
 EOF
 
-cd /opt/alist
-./alist -conf data/config.json
+cd /usr/share/alist
+./alist -conf config.json

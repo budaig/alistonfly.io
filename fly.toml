@@ -1,12 +1,12 @@
-# fly.toml app configuration file generated for a-soldcoin-list on 2024-01-14T18:13:43+08:00
+# fly.toml app configuration file generated for alistpan on 2024-07-30T23:32:53+08:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "alistpan"
-primary_region = "ams"
-kill_signal = "SIGINT"
-kill_timeout = "5s"
+app = 'alistpan'
+primary_region = 'ams'
+kill_signal = 'SIGINT'
+kill_timeout = '5s'
 
 [experimental]
   auto_rollback = true
@@ -14,31 +14,38 @@ kill_timeout = "5s"
 [build]
 
 [[mounts]]
-  source = "alist_db_data"
-  destination = "/opt/alist/data"
-  auto_extend_size_threshold = 0
+  source = 'alist_db_data'
+  destination = '/usr/share/alist'
+
+[http_service]
+  internal_port = 5286
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
 
 [[services]]
-  protocol = "tcp"
+  protocol = 'tcp'
   internal_port = 5286
   min_machines_running = 0
-  processes = ["app"]
+  processes = ['app']
 
   [[services.ports]]
     port = 80
-    handlers = ["http"]
+    handlers = ['http']
     force_https = true
 
   [[services.ports]]
     port = 443
-    handlers = ["tls", "http"]
+    handlers = ['tls', 'http']
 
   [[services.tcp_checks]]
-    interval = "15s"
-    timeout = "2s"
-    grace_period = "1s"
+    interval = '15s'
+    timeout = '2s'
+    grace_period = '1s'
 
 [[vm]]
-  cpu_kind = "shared"
+  cpu_kind = 'shared'
   cpus = 1
   memory_mb = 256
