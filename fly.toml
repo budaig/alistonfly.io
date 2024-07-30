@@ -1,0 +1,6 @@
+# fly.toml app configuration file generated for a-soldcoin-list on 2024-01-14T18:13:43+08:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "alistpan"
