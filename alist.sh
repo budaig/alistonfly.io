@@ -14,7 +14,7 @@ cat >/opt/alist/data/config.json <<EOF
     # "host": "$SQLHOST",
     # "port": $SQLPORT,
     # "name": "$SQLNAME",
-    "table_prefix": "x_",
+    # "table_prefix": "x_",
     "db_file": "data.db"
   },
   "scheme": {
