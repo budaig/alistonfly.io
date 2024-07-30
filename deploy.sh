@@ -62,14 +62,14 @@ EOF
 printf '\e[32m成功创建配置\n\e[0m'
 printf '\e[33m进度4/5：创建环境变量及部署区域\n\e[0m'
 
-flyctl secrets set DATABASE="${DATABASE}"
+/usr/share/bin/flyctl secrets set DATABASE="${DATABASE}"
 # flyctl secrets set SQLUSER="${SQLUSER}"
 # flyctl secrets set SQLPASSWORD="${SQLPASSWORD}"
 # flyctl secrets set SQLHOST="${SQLHOST}"
 # flyctl secrets set SQLPORT="${SQLPORT}"
 # flyctl secrets set SQLNAME="${SQLNAME}"
 # flyctl platform regions ${REGION}
-flyctl regions set ${REGION}
+/usr/share/bin/flyctl regions set ${REGION}
 printf '\e[32m进度5/5：部署\n\e[0m'
-flyctl deploy --detach
+/usr/share/bin/flyctl deploy --detach
 # flyctl status --app ${APP_NAME}
