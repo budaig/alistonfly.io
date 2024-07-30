@@ -2,6 +2,7 @@
 
 REGION=ams
 APP_NAME=alistpan
+PATH=/usr/share/bin/
 
 if ! command -v flyctl >/dev/null 2>&1; then
     printf '\e[33m进度1/5：安装Fly.io CLI。\n\e[0m'
@@ -62,14 +63,15 @@ EOF
 printf '\e[32m成功创建配置\n\e[0m'
 printf '\e[33m进度4/5：创建环境变量及部署区域\n\e[0m'
 
-/usr/share/bin/flyctl secrets set DATABASE="${DATABASE}"
+$PATH/flyctl auth -t ${{ secrets.FLY_API_TOKEN }}
+$PATH/flyctl secrets set DATABASE="${DATABASE}"
 # flyctl secrets set SQLUSER="${SQLUSER}"
 # flyctl secrets set SQLPASSWORD="${SQLPASSWORD}"
 # flyctl secrets set SQLHOST="${SQLHOST}"
 # flyctl secrets set SQLPORT="${SQLPORT}"
 # flyctl secrets set SQLNAME="${SQLNAME}"
 # flyctl platform regions ${REGION}
-/usr/share/bin/flyctl regions set ${REGION}
+$PATH/flyctl regions set ${REGION}
 printf '\e[32m进度5/5：部署\n\e[0m'
-/usr/share/bin/flyctl deploy --detach
+$PATH/flyctl deploy --detach
 # flyctl status --app ${APP_NAME}
