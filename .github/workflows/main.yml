@@ -9,7 +9,7 @@ env:
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
   APP_NAME: ${{ secrets.APP_NAME }}
   # SQLUSER: ${{ secrets.SQLUSER }}
-  # DATABASE: ${{ secrets.DATABASE }}
+  DATABASE: ${{ secrets.DATABASE }}
   # SQLPASSWORD: ${{ secrets.SQLPASSWORD }}
   # SQLHOST: ${{ secrets.SQLHOST }}
   # SQLPORT: ${{ secrets.SQLPORT }}
