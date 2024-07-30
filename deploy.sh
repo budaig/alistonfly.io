@@ -72,5 +72,5 @@ printf '\e[33m进度4/5：创建环境变量及部署区域\n\e[0m'
 # flyctl platform regions ${REGION}
 /usr/share/bin/flyctl regions set ${REGION}
 printf '\e[32m进度5/5：部署\n\e[0m'
-/usr/share/bin/flyctl deploy --detach
+/usr/share/bin/flyctl deploy --remote-only
 # flyctl status --app ${APP_NAME}
